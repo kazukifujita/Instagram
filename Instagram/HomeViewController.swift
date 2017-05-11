@@ -11,7 +11,11 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
+
+
+
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, PostTableViewCelldelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -20,9 +24,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
       // FIRDatabaseのobserveEventの登録状態を表す
       var observing = false
     
+    func commentBUtton_Clicked(cell: PostTableViewCell) {
+        self.performSegue(withIdentifier: "Show Comment Page", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -32,9 +39,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.allowsSelection = false
         
         
-        let nib = UINib(nibName: "PostTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "Cell")
-        tableView.rowHeight = UITableViewAutomaticDimension
+        let nib = UINib(nibName: "PostTableViewCell", bundle: nil)//セルの登録１
+        tableView.register(nib, forCellReuseIdentifier: "Cell")//セルの登録2
+        tableView.rowHeight = UITableViewAutomaticDimension//セルの高さを自動で調整
 
         // Do any additional setup after loading the view.
     }
@@ -113,9 +120,14 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath) as! PostTableViewCell
         cell.setPostData(postData: postArray[indexPath.row])
         
+        cell.delegate = self
+        
         // セル内のボタンのアクションをソースコードで設定する
         cell.likeButton.addTarget(self, action:#selector(handleButton(sender:event:)), for:  UIControlEvents.touchUpInside)
         
+      
+        
+ 
         return cell
     }
     
@@ -164,22 +176,15 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             postRef.updateChildValues(likes)
             
         }
-    }
 
-    override func didReceiveMemoryWarning() {
+    }
+        override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     
     
 }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+ 
+    
 }
+

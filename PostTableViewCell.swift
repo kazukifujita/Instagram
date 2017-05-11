@@ -7,6 +7,11 @@
 //
 
 import UIKit
+protocol PostTableViewCelldelegate{
+    
+    func commentBUtton_Clicked(cell: PostTableViewCell)
+    
+}
 
 class PostTableViewCell: UITableViewCell {
     
@@ -15,12 +20,16 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
-    @IBAction func comentButton(_ sender: Any) {
-    }
+    @IBOutlet weak var commentButton: UIButton!
+
+    var delegate: PostTableViewCelldelegate!
+    
     
     
 
     override func awakeFromNib() {
+        
+        
         super.awakeFromNib()
         // Initialization code
     }
@@ -51,6 +60,9 @@ class PostTableViewCell: UITableViewCell {
             let buttonImage = UIImage(named: "like_none")
             self.likeButton.setImage(buttonImage, for: UIControlState.normal)
         }
+    }
+    @IBAction func commentButton_Clicked(_ sender: Any) {
+        delegate?.commentBUtton_Clicked(cell: self)
     }
 }
     
