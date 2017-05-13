@@ -16,16 +16,32 @@ import FirebaseDatabase
 
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, PostTableViewCelldelegate {
+  internal func commentBUtton_Clicked(cell: PostTableViewCell) {
+   }
+
+
 
     @IBOutlet weak var tableView: UITableView!
     
       var postArray: [PostData] = []
-    
+     var postData: PostData!
+   
       // FIRDatabaseのobserveEventの登録状態を表す
       var observing = false
     
-    func commentBUtton_Clicked(cell: PostTableViewCell) {
+    func commentBUtton_Clicked(sender: UIButton, event:UIEvent) {
+  
+        // タップされたセルのインデックスを求める
+        let touch = event.allTouches?.first
+        let point = touch!.location(in: self.tableView)
+        let indexPath = tableView.indexPathForRow(at: point)
+        
+        // 配列からタップされたインデックスのデータを取り出す
+       postData = postArray[indexPath!.row]
+     
         self.performSegue(withIdentifier: "Show Comment Page", sender: self)
+        
+        
     }
     
     override func viewDidLoad() {
@@ -125,9 +141,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // セル内のボタンのアクションをソースコードで設定する
         cell.likeButton.addTarget(self, action:#selector(handleButton(sender:event:)), for:  UIControlEvents.touchUpInside)
         
-      
-        
- 
+        cell.commentButton.addTarget(self, action:#selector(commentBUtton_Clicked(sender:event:)), for:  UIControlEvents.touchUpInside)
+  
         return cell
     }
     
@@ -180,11 +195,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
         override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    
-    
+     
 }
- 
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {//segueから遍移先のCommentViewCOntrollerを取得する
+       let commentViewController:CommentViewController = segue.destination as! CommentViewController
+        //遍移先のCommentViewControllerで宣言しているpostdataに値を代入して渡す
+       commentViewController.postData = postData
     
 }
 
+}

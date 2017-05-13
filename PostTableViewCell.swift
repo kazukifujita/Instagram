@@ -21,7 +21,9 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var commentButton: UIButton!
-
+//ユーザー名とコメントが表示されるテキスト
+    @IBOutlet weak var commentLabel: UILabel!
+    
     var delegate: PostTableViewCelldelegate!
     
     
@@ -43,8 +45,13 @@ class PostTableViewCell: UITableViewCell {
         self.postImageView.image = postData.image
         
         self.captionLabel.text = "\(postData.name!) : \(postData.caption!)"
+        
+        
         let likeNumber = postData.likes.count
         likeLabel.text = "\(likeNumber)"
+        
+        //コメント
+        self.commentLabel.text = "\(postData.comments)"
         
         let formatter = DateFormatter()
         formatter.locale = NSLocale(localeIdentifier: "ja_JP") as Locale!
@@ -61,8 +68,6 @@ class PostTableViewCell: UITableViewCell {
             self.likeButton.setImage(buttonImage, for: UIControlState.normal)
         }
     }
-    @IBAction func commentButton_Clicked(_ sender: Any) {
-        delegate?.commentBUtton_Clicked(cell: self)
-    }
+
 }
     
