@@ -47,12 +47,27 @@ class PostTableViewCell: UITableViewCell {
         self.captionLabel.text = "\(postData.name!) : \(postData.caption!)"
         
         
+        
         let likeNumber = postData.likes.count
         likeLabel.text = "\(likeNumber)"
         
-        //コメント
-        self.commentLabel.text = "\(postData.comments)"
-        
+     //self.commentLabel.text = "\(comments["commentname"]) : \(comments["comment"])\n"（前までのコード）
+             /////コメント名:コメント内容 改行で要素文繰り返す
+        var commentText = ""
+        for comment in postData.comments {
+            
+            // コメント名 : コメント内容 改行で要素文繰り返す 
+            commentText += "\(comment["commentname"]!) : \(comment["comment"]!)\n"
+               
+            //コメントが増えるごとにラベルの高さを自動調整
+            commentLabel.numberOfLines = 0
+            commentLabel.sizeToFit()
+            commentLabel.lineBreakMode = .byWordWrapping
+            commentLabel.font = UIFont(name: "HirakakuProN-W6", size:15)
+            
+        }
+        self.commentLabel.text = commentText
+
         let formatter = DateFormatter()
         formatter.locale = NSLocale(localeIdentifier: "ja_JP") as Locale!
         formatter.dateFormat = "yyyy-MM-dd HH:mm"

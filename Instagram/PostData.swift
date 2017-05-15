@@ -37,8 +37,8 @@ class PostData: NSObject {
         self.name = valueDictionary["name"] as? String
         
         self.caption = valueDictionary["caption"] as? String
-      //コメント用のポスト追加↓
-                                       //  コメントが保存される
+     
+         //コメント用のポスト追加↓                               //  コメントが保存される
         if let comments = valueDictionary["comments"] as? [[String : String]] {
             self.comments = comments
         }

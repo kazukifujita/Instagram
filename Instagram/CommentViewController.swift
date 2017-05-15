@@ -46,6 +46,7 @@ class CommentViewController: UIViewController {
             let commentData = [ "commentname": commentNameText.text!, "comment": commentText.text!] as [String : Any]
             // postDataに必要な情報を取得しておく
             
+            
                       // postData.commentsへコメントデータを追記
              postData.comments.append(commentData as! [String : String])
             
@@ -54,6 +55,13 @@ class CommentViewController: UIViewController {
              let postRef = FIRDatabase.database().reference().child(Const.PostPath).child(postData.id!)
              let comments = ["comments": postData.comments]
              postRef.updateChildValues(comments)
+            
+            // HUDで投稿完了を表示する
+            SVProgressHUD.showSuccess(withStatus: "コメントを投稿しました")
+            
+            // 全てのモーダルを閉じる
+            UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
+            
         }
     }
     //キャンセルを押された時にホーム画面に戻る
