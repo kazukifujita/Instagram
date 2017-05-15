@@ -41,7 +41,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8YG-Ds-1ny">
-                        <rect key="frame" x="68" y="495" width="40" height="39"/>
+                        <rect key="frame" x="68" y="504.5" width="40" height="20.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="s4i-qs-atZ"/>
                         </constraints>
@@ -88,7 +88,6 @@
                     <constraint firstItem="1iF-bL-tIO" firstAttribute="centerY" secondItem="NZP-C9-mjA" secondAttribute="centerY" id="Tci-Bh-7wz"/>
                     <constraint firstItem="HhO-oP-25u" firstAttribute="leading" secondItem="NZP-C9-mjA" secondAttribute="leading" id="V68-Yz-jSi"/>
                     <constraint firstItem="HhO-oP-25u" firstAttribute="top" secondItem="8YG-Ds-1ny" secondAttribute="bottom" constant="10" id="WFk-S9-3NU"/>
-                    <constraint firstItem="HhO-oP-25u" firstAttribute="top" secondItem="NZP-C9-mjA" secondAttribute="bottom" constant="10" id="WRG-3M-vMy"/>
                     <constraint firstItem="gJ3-ft-WKc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Yv0-e3-xXL"/>
                     <constraint firstAttribute="trailingMargin" secondItem="HhO-oP-25u" secondAttribute="trailing" constant="10" id="Zbn-cN-TJP"/>
                     <constraint firstItem="ktt-bp-Jta" firstAttribute="top" secondItem="HhO-oP-25u" secondAttribute="bottom" constant="10" id="cJO-d8-bOM"/>
