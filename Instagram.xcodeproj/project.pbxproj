@@ -160,7 +160,6 @@
 		A36F07C01EBC2E1700A5B0C7 = {
 			isa = PBXGroup;
 			children = (
-				A37F110E1EBDC8EB000BE7E1 /* Instagram-Bridging-Header.h */,
 				A36F07CB1EBC2E1700A5B0C7 /* Instagram */,
 				A36F07CA1EBC2E1700A5B0C7 /* Products */,
 				0FEE336BD411ED5CA13D4FFC /* Pods */,
@@ -182,6 +181,7 @@
 				A37F11041EBDC631000BE7E1 /* AdobeCreativeSDKCore.framework */,
 				A37F11051EBDC631000BE7E1 /* AdobeCreativeSDKImage.framework */,
 				A36F07CC1EBC2E1700A5B0C7 /* AppDelegate.swift */,
+				A37F110E1EBDC8EB000BE7E1 /* Instagram-Bridging-Header.h */,
 				A36F07D01EBC2E1700A5B0C7 /* Main.storyboard */,
 				A36F07CE1EBC2E1700A5B0C7 /* ViewController.swift */,
 				A37F11251EBDE452000BE7E1 /* Const.swift */,
